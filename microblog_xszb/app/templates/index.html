@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<!--<h1>Hi, {{user.nickname}}!</h1>-->
+<h1>{{name}}!</h1>
+{% for p in range(length) %}
+    {{ li0[p] }}</br></br>
+    {% for r in li1[p].split('\n') %}
+        {{ r }}</br>
+    {% endfor %}</br></br>
+{% endfor %}
+{% endblock %}
