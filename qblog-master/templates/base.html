@@ -1,0 +1,259 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html {% block html_attribs %}lang="zh-CN"{% endblock html_attribs %}>
+{%- block html %}
+<head>
+    {%- block head %}
+    {%- block metas %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    {%- endblock metas %}
+
+    <title>{% block title %}Qblog{% endblock title %}</title>
+
+    <!-- Bootstrap -->
+    {%- block styles %}
+    <!--<link href="{{url_for('static',filename = 'bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">-->
+    <link href="{{url_for('static',filename = 'css/index.css')}}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+    <!--<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+    {%- endblock styles %}
+
+
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename = 'favicon.ico') }}"
+          type="image/x-ico">
+    <link rel="icon" href="{{ url_for('static',filename = 'favicon.ico') }}"
+          type="image/x-ico">
+
+
+    {%- endblock head %}
+</head>
+<body {% block body_attribs %}{% endblock body_attribs %}>
+{% block body -%}
+<div id="fullwrapper">
+    <div id="particles-js" style="z-index: 0"></div>
+    <div class="wrap" style="z-index: 3">
+    {% block navbar %}
+    <meta charset="UTF-8">
+    <div class="header">
+        <div class="logo">
+            <h3>
+                <a href="#">myblog</a>
+            </h3>
+            Good Luck To You!
+        </div>
+        <ul class="nav">
+            <li id="nvabar-item-index"><a href="/">首页</a></li>
+            <li id="navbar-page-2"><a href="#">留言本</a></li>
+        </ul>
+    </div>
+
+    {%- endblock navbar %}
+        </div>
+    <div class="wrap" style="z-index: 2">
+    {% block content -%}
+    {%- endblock content %}
+    {% block sidebar -%}
+    <div id="sidebar" role="complementary">
+    <!-- Search Start -->
+    <div id="search">
+        <form method="post" id="searchform" action="http://127.0.0.1/zb_system/cmd.php?act=search">
+                            <span class="st">
+                                <input type="text" value="" name="q" id="s" class="searchtxt">
+                            </span>
+                            <span class="ss">
+                                <input type="submit" name="btnPost" value="" class="searchsm">
+                            </span>
+        </form>
+    </div>
+    <div class="clear">
+    </div>
+    <!-- Search End -->
+    <ul>
+
+        <li class="widget divCalendar">
+            <h2 class="widgettitle" style="display:none;"></h2>
+            <ul>
+                <table id="tbCalendar">
+                    <caption><a href="http://127.0.0.1/?date=2016-1">«</a>&nbsp;&nbsp;&nbsp;<a
+                            href="http://127.0.0.1/?date=2016-2">2016年2月</a>&nbsp;&nbsp;&nbsp;<a
+                            href="http://127.0.0.1/?date=2016-3">»</a></caption>
+                    <thead>
+                    <tr>
+                        <th title="星期一" scope="col">
+                            <small>一</small>
+                        </th>
+                        <th title="星期二" scope="col">
+                            <small>二</small>
+                        </th>
+                        <th title="星期三" scope="col">
+                            <small>三</small>
+                        </th>
+                        <th title="星期四" scope="col">
+                            <small>四</small>
+                        </th>
+                        <th title="星期五" scope="col">
+                            <small>五</small>
+                        </th>
+                        <th title="星期六" scope="col">
+                            <small>六</small>
+                        </th>
+                        <th title="星期日" scope="col">
+                            <small>日</small>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td><a href="http://127.0.0.1/?id=4">25</a></td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td class="pad" colspan="6"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </ul>
+        </li>
+
+        <li class="widget divContorPanel">
+            <h2 class="widgettitle">
+                控制面板 </h2>
+            <ul>
+                {% if current_user and current_user.is_authenticated %}
+                <span class="cp-hello">欢迎 {{ current_user.name }} (管理员) <a href="{{url_for('userBp.logout')}}">注销</a></span><br><span class="cp-login"><a
+                    href="{{url_for('userBp.login')}}">后台管理</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a
+                    href="http://127.0.0.1/zb_system/cmd.php?act=ArticleEdt">新建文章</a></span>
+                {% else %}
+                <span class="cp-hello">您好，欢迎来访我的博客！</span><br><span class="cp-login"><a
+                    href="{{url_for('userBp.login')}}">登陆后台</a></span>&nbsp;&nbsp;<span class="cp-vrs"><a
+                    href="http://127.0.0.1/zb_system/cmd.php?act=misc&type=vrs">查看权限</a></span>
+                {% endif %}
+
+            </ul>
+        </li>
+
+
+        <li class="widget divCatalog">
+            <h2 class="widgettitle">
+                网站分类 </h2>
+            <ul>
+            </ul>
+        </li>
+
+        <li class="widget divComments">
+            <h2 class="widgettitle">
+                最新留言 </h2>
+            <ul>
+                <li><a href="http://127.0.0.1/?id=1#cmt1" title="qiqi @ 2016-02-25 15:38:07">fdddddddddd</a></li>
+            </ul>
+        </li>
+
+
+        <li class="widget divArchives">
+            <h2 class="widgettitle">
+                文章归档 </h2>
+            <ul>
+                <li><a href="http://127.0.0.1/?date=2016-2">2016年2月 (3)</a></li>
+            </ul>
+        </li>
+
+
+        <li class="widget divFavorites">
+            <h2 class="widgettitle">
+                网站收藏 </h2>
+            <ul>
+                <li><a href="http://sdf.sdfsdf.com/" target="_blank">sdf</a></li>
+            </ul>
+        </li>
+
+
+        <li class="widget divLinkage">
+            <h2 class="widgettitle">
+                友情链接 </h2>
+            <ul>
+                <li><a href="http://www.dbshost.cn/" target="_blank" title="独立博客">sdfsdf</a></li>
+            </ul>
+        </li>
+
+
+        <li class="widget divMisc">
+            <h2 class="widgettitle" style="display:none;"></h2>
+            <ul>
+                <li><a href="http://127.0.0.1/feed.php" target="_blank"><img
+                        src="{{ url_for('static',filename='images/rss.png')}}" height="31" width="88"
+                        alt="订阅本站的 RSS 2.0 新闻聚合"></a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+    {%- endblock sidebar %}
+    </div>
+    <div class="wrap" style="z-index: 1">
+    {% block footer -%}
+        <div id="footer" class="clear">
+                    <span>
+                       Power by
+                            <a href="http://www.sdf.com/" rel="external" target="_blank">
+                                奇哥Blog
+                            </a>
+                            | Theme by
+                            <a href="http://www.sdf.net/" rel="external">奇哥威武
+                            </a>Copyright Your WebSite.Some Rights Reserved.                    </span>
+                </div>
+    {%- endblock footer %}
+    </div>
+    {% block scripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{url_for('static',filename='jquery/jquery-2.2.0.min.js')}}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>-->
+    <script src="{{ url_for('static',filename='others/particles/particles.js') }}"></script>
+    {%- endblock scripts %}
+</div>
+{%- endblock body %}
+</body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}

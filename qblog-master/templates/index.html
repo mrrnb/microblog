@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Flasky{% endblock %}
+{% block content %}
+<div id="content" role="main">
+    {% for data in datas %}
+    <div class="postbox">
+    <div class="content_top conleft"></div>
+    <div class="post hentry">
+        <h2>
+            <a href="/post/{{ data.id }}" rel="bookmark" title="{{data.title}}">{{data.title}}</a>
+        </h2>
+        <div class="post_intro">
+                            <span>
+                                  {{data.username}}发表于
+                                <a href="#" title="查看未分类中的全部文章" rel="category tag">
+                                    未分类 </a>
+                                分类，标签:
+                                                            </span>
+        </div>
+        <div class="content_date">
+            <div class="datebg">
+                                <span class="day">
+                                25                                </span>
+                                <span>
+                               02月                                </span>
+                                <span>
+                                2016                                </span>
+            </div>
+        </div>
+        <div class="comments">
+                            <span class="cmt_num">
+                                <a href="http://127.0.0.1/?id=4#comments"
+                                   title="《{{data.title}}》上的评论">0</a>
+                            </span>
+        </div>
+        <div class="entry">
+            {{ data.content }} {% if data.over == 0 %}...<a href="#" style="float: right">阅读全文</a>{% else %}【全文完】{% endif %}
+        </div>
+    </div>
+    <div class="content_foot conleft"></div>
+    </div>
+
+    {% endfor %}
+    <div class="page_navi clear">
+                            <span class="pages">
+                                1/1                            </span>
+        <a href="http://127.0.0.1/" title="‹‹"><span class="page">‹‹</span></a>
+        <span class="current">1</span>
+        <a href="http://127.0.0.1/" title="››"><span class="page">››</span></a>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static',filename='js/index.js') }}"></script>
+{% endblock %}

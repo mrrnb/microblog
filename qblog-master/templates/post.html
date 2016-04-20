@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{##}
+{#{% import "bootstrap/wtf.html" as wtf %}#}
+{##}
+{% block title %}Flasky{% endblock %}
+{% block content %}
+<div id="post_content" class="widecolumn" role="main">
+                    <div class="content_top conleft">
+                    </div>
+                    <div class="post-1 post hentry" id="post-1">
+                        <h2>{{ data.title }}</h2>
+                        <div class="post_intro">
+                            <span>
+                                  发表于
+                                <a href="http://127.0.0.1/?cate=1" title="查看未分类中的全部文章" rel="category tag">
+                                    未分类                                </a>
+                                分类，标签:
+                                                            </span>
+                        </div>
+                        <div class="content_date">
+                            <div class="datebg">
+                                <span class="day">
+                                25                                </span>
+                                <span>
+                               02月                                </span>
+                                <span>
+                                2016                                </span>
+                            </div>
+                        </div>
+                        <div class="comments">
+                            <span class="cmt_num">
+                                <a href="http://127.0.0.1/?id=1#comments" title="《欢迎使用Z-BlogPHP!》上的评论">
+                               0                                </a>
+                            </span>
+                        </div>
+                        <div class="post_entry">
+                        {{ data.content }}
+                        <ul class="align_left">
+                                « 上一篇：
+                                <a href="http://127.0.0.1/?id=1" rel="prev">
+                                   欢迎使用Z-BlogPHP!                                </a>
+                            </ul>
+                            <ul class="align_right">
+                                <a href="http://127.0.0.1/?id=4" rel="next">
+                                    sdfdsaf                                </a>
+                                ：下一篇 »
+                            </ul>
+                        </div>
+</div>
+<h4 id="comments" class="clear">0 篇评论</h4>
+<ol class="commentlist">
+<label id="AjaxCommentBegin"></label>
+    <label id="AjaxCommentEnd"></label>
+</ol>
+<div class="comments-navi">
+</div>
+<div id="respond_box">
+<div id="respond">
+    <form action="http://127.0.0.1/zb_system/cmd.php?act=cmt&amp;postid=1&amp;key=3017e48d8024f509b8444efbfe933936" method="post" id="commentform">
+	<input type="hidden" name="inpId" id="inpId" value="1">
+    <input type="hidden" name="inpRevID" id="inpRevID" value="0">
+        <h4 class="clear">
+            发表我的评论
+        </h4>
+		    <input type="hidden" name="inpName" id="inpName" value="qiqi">
+    <input type="hidden" name="inpEmail" id="inpEmail" value="">
+    <input type="hidden" name="inpHomePage" id="inpHomePage" value="">
+	        <p>
+            <textarea name="txaArticle" id="txaArticle" class="text" cols="5" rows="10" tabindex="5"></textarea>
+        </p>
+        <p>
+            <input name="btnSumbit" type="submit" id="submit" tabindex="6" onclick="JavaScript:return VerifyMessage()" class="subin" value="">
+        </p>
+        <div id="cancel_reply">
+            <a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">
+                点击这里取消回复。
+            </a>
+        </div>
+    </form>
+</div>
+</div>                <div class="content_foot conleft">
+                </div>
+                </div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static',filename='js/index.js') }}"></script>
+{% endblock %}
