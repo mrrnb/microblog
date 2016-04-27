@@ -11,7 +11,7 @@ import bs4
 
 
 def main():
-    name = 'xsname'
+    name = '攀上漂亮女上司'
     zhang_s = 1
     zhang_e = 10
     username = 'mingruirui'
